@@ -1,0 +1,14 @@
+<%= form_for([@post, @post.comments.build]) do |f| %>
+
+  <div class="input-prepend">
+    <span class="add-on">@</span>
+    <%= f.text_field :commenter ,class: 'span2',placeholder: 'commenter'%>
+  </div>
+
+  <div class="field">
+    <%= f.text_area :body,size: '20*20'%>
+  </div>
+  <div class="actions">
+    <%= f.submit 'Save Comment' ,:class => 'btn' %>
+  </div>
+<% end %>

@@ -1,0 +1,19 @@
+<%= render @post %>
+<h3>action:</h3>
+<div class="btn-group">
+  <a href=<%= edit_post_path(@post) %> class="btn"><i class="icon-edit"></i> Edit</a>
+  <a href="#modal" data-toggle="modal" class="btn"><i class="icon-warning-sign"></i> Destroy</a>
+</div>
+<h3>tags:</h3>
+<ul class="breadcrumb">
+  <% @post.tag_list.each do |t| %>
+    <li><%= link_to t, '#' %>  <span class="divider">/</span></li>
+  <% end %>
+</ul>
+
+<h3>Comments</h3>
+<%= render @post.comments %> 
+
+<h4>Add a comment:</h4>
+<%= render "comments/form" %>
+<%= render "modal" %>
