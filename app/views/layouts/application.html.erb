@@ -7,53 +7,31 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <div class="navbar">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
+        <div class="container-fluid">
+          <a class="brand pjax" href="/">
+            Blog
           </a>
-          <a class="brand" href="/">Blog</a>
-          <div class="nav-collapse collapse navbar-responsive-collapse">
-            <ul class="nav">
-              <li class="active"><a href="/">Home</a></li>
-              <li><a href="#">Link</a></li>
-              <li><a href="#">Link</a></li>
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li> <a href=<%= new_post_path %> ><i class="icon-plus"></i> New post</a> </i> </li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li class="nav-header">Nav header</li>
-                <li><a href="#">Separated link</a></li>
-                <li><a href="#">One more separated link</a></li>
-              </ul>
-              </li>
-            </ul>
-            <form class="navbar-search pull-left" action="">
-              <input type="text" class="search-query span2" placeholder="Search">
-            </form>
+          <div class="nav-collapse">
             <ul class="nav pull-right">
-              <li><a href="#">Link</a></li>
-              <li class="divider-vertical"></li>
-              <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown">Dropdown <b class="caret"></b></a>
-              <ul class="dropdown-menu">
-                <li><a href="#">Action</a></li>
-                <li><a href="#">Another action</a></li>
-                <li><a href="#">Something else here</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
-              </ul>
-              </li>
+              <% if current_user %>
+                <% if can? :create ,Post %>
+                  <li> <a href=<%= new_post_path %> ><i class="icon-plus"></i> New post</a> </i> </li>
+                <% end %>
+                <% if can? :access, :rails_admin %>
+                  <li><a href="/admin">Dashboard</a></li>
+                <% end %>
+                <li><%= link_to current_user.email, "/admin/user/#{current_user.id}/edit" %></li>
+                <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><span class="label label-important">Log out</span></a></li>
+                <li><img alt="A948e6e068754e437c4047a2a693f659?s=30" src="http://www.gravatar.com/avatar/a948e6e068754e437c4047a2a693f659?s=30" style="padding-top:5px"></li>
+              <% else %>
+                <li><a href="/users/sign_in"><span class="label label-important">Sign In</span></a></li>
+              <% end %>
             </ul>
-          </div><!-- /.nav-collapse -->
+          </div>
         </div>
-      </div><!-- /navbar-inner -->
+      </div>
     </div>
     <div class="jumbotron masthead">
       <div class="container">

@@ -1,9 +1,11 @@
 <%= render @post %>
-<h3>action:</h3>
-<div class="btn-group">
-  <a href=<%= edit_post_path(@post) %> class="btn"><i class="icon-edit"></i> Edit</a>
-  <a href="#modal" data-toggle="modal" class="btn"><i class="icon-warning-sign"></i> Destroy</a>
-</div>
+<% if can? :manage, Post%>
+  <h3>action:</h3>
+  <div class="btn-group">
+    <a href=<%= edit_post_path(@post) %> class="btn"><i class="icon-edit"></i> Edit</a>
+    <a href="#modal" data-toggle="modal" class="btn"><i class="icon-warning-sign"></i> Destroy</a>
+  </div>
+<% end %>
 <h3>tags:</h3>
 <ul class="breadcrumb">
   <% @post.tag_list.each do |t| %>
