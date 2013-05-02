@@ -16,6 +16,13 @@ RailsAdmin.config do |config|
   
 
   config.authorize_with :cancan
+  config.model User do
+    update do
+      configure :ability_list do
+        partial 'ability_list'
+      end
+    end
+  end
   # If you want to track changes on your models:
   # config.audit_with :history, 'User'
 

@@ -24,7 +24,8 @@
                 <% end %>
                 <li><%= link_to current_user.email, "/admin/user/#{current_user.id}/edit" %></li>
                 <li><a href="/users/sign_out" data-method="delete" rel="nofollow"><span class="label label-important">Log out</span></a></li>
-                <li><img alt="A948e6e068754e437c4047a2a693f659?s=30" src="http://www.gravatar.com/avatar/a948e6e068754e437c4047a2a693f659?s=30" style="padding-top:5px"></li>
+                <li>
+                <%= gravatar current_user ,s: 30, style: "padding-top:5px" %>
               <% else %>
                 <li><a href="/users/sign_in"><span class="label label-important">Sign In</span></a></li>
               <% end %>
@@ -35,8 +36,8 @@
     </div>
     <div class="jumbotron masthead">
       <div class="container">
-        <a href="http://thehungrycoder.com/">
-          <img src="http://thehungrycoder.com/uploads/2012/11/cropped-lungi.jpg" class="header-image" width="1196" height="293" alt="">
+        <a href="/">
+          <%= image_tag 'cropped-lungi.jpg' %>
         </a>
       </div>
     </div>

@@ -1,0 +1,13 @@
+<% unless current_user.admin? %>
+  <%= javascript_include_tag 'select2' %>
+  <%= stylesheet_link_tag 'select2' %>
+
+  <%= form.text_field :ability_list %>
+  <script>
+    $('#user_ability_list').select2({
+      tags:<%= raw User.ability_list %>,
+      width: '220px',
+      maximumInputLength: 10
+    });
+  </script>
+<% end %>

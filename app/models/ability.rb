@@ -10,14 +10,17 @@ class Ability
     else
       can :read, :all
     end
-    if user.ability_list.include? 'create'
+    if user.ability_list.include? 'create_post'
       can :create, Post
     end
-    if user.ability_list.include? 'update'
+    if user.ability_list.include? 'update_post'
       can :update, Post
     end
-    if user.ability_list.include? 'destroy'
+    if user.ability_list.include? 'destroy_post'
       can :destroy, Post
+    end
+    if user.ability_list.include? 'destroy_comment'
+      can :destroy, Comment
     end
     #
     # The first argument to `can` is the action you are giving the user 

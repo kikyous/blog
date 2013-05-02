@@ -39,7 +39,7 @@
 
 <script>
   $('#post_tag_list').select2({
-    tags:<%= raw ActsAsTaggableOn::Tag.all.map(&:name) %>,
+    tags:<%= raw Post.tag_counts_on(:tags).map(&:name) %>,
     width: '220px',
     maximumInputLength: 10
   });

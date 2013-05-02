@@ -1,9 +1,17 @@
+<div class="media">
+  <a class="pull-left" href="#">
+    <%= gravatar comment.user %>
+  </a>
+  <div class="media-body">
+    <blockquote>
+      <p><%= comment.body %></p>
+      <small>@<%= comment.user %></small>
+      <% if can? :destroy, Comment %>
+        <%= link_to 'Destroy Comment', [comment.post, comment],
+          :confirm => 'Are you sure?',
+          :method => :delete %>
+      <% end %>
+    </blockquote>
+  </div>
+</div>
 
-<blockquote>
-  <img src="http://www.gravatar.com/avatar/HASH" />
-  <p><%= comment.body %></p>
-  <small>@<%= comment.commenter %></small>
-  <%= link_to 'Destroy Comment', [comment.post, comment],
-               :confirm => 'Are you sure?',
-               :method => :delete %>
-</blockquote>

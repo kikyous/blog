@@ -1,18 +1,30 @@
 <% if current_user %>
   <%= form_for([@post, @post.comments.build]) do |f| %>
-
-    <div class="input-prepend">
-      <span class="add-on">@</span>
-      <%= f.text_field :commenter ,class: 'span2',placeholder: 'commenter'%>
-    </div>
-
-    <div class="field">
-      <%= f.text_area :body,size: '20*20'%>
-    </div>
-    <div class="actions">
-      <%= f.submit 'Save Comment' ,:class => 'btn' %>
+    <div class="media">
+      <a class="pull-left" href="#">
+        <%= gravatar current_user %>
+      </a>
+      <div class="media-body">
+        <blockquote>
+          <%= f.text_area :body,size: "20x3"%>
+          <small>@<%= current_user %></small>
+          <%= f.submit 'Save Comment' ,:class => 'btn btn-mini' %>
+        </blockquote>
+      </div>
     </div>
   <% end %>
 <% else %>
+    <div class="media">
+      <a class="pull-left" href="#">
+        <%= gravatar nil %>
+      </a>
+      <div class="media-body">
+        <blockquote>
+          hi guest !<br />
+        <a href="/users/sign_in"><span class="label label-important">Sign In</span></a>
+        to post a comment
+        </blockquote>
+      </div>
+    </div>
 
 <% end %>

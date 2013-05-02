@@ -3,7 +3,11 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.json
   def index
-    @posts = Post.page(params[:page])
+    if params[:tag_name]
+      @posts=Post.tagged_with(params[:tag_name].split(','))
+    end
+    @posts ||= Post
+    @posts = @posts.page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -81,4 +85,5 @@ class PostsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
 end
