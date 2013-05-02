@@ -17,7 +17,7 @@ RailsAdmin.config do |config|
 
   config.authorize_with :cancan
   config.model User do
-    update do
+    edit do
       configure :ability_list do
         partial 'ability_list'
       end
