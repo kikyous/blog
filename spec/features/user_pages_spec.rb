@@ -55,8 +55,8 @@ describe "User pages" do
                          password_confirmation: "foobar123")
         @user.save
 
-        fill_in "user_email",                 with: "user@example.com"
-        fill_in "user_password",              with: "foobar123"
+        fill_in "user_email",          with: "user@example.com"
+        fill_in "user_password",       with: "foobar123"
       end
 
       it "should sign in success" do
